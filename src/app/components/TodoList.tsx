@@ -3,15 +3,17 @@ import DeleteTodo from "./DeleteTodo";
 
 const getData = async () => {
   try {
+    console.log("Fetching from:", process.env.NEXT_PUBLIC_API_URL);
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/todo`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      },
-      next: { revalidate: 10 }
+      }, 
+      cache: "no-store"
     });
     if (!res.ok) {
-      throw new Error("failed to fetch Data")
+      throw new Error(`failed to fetch Data ${res.status} ${res.statusText}`)
     };
     const result = await res.json()
     return result
