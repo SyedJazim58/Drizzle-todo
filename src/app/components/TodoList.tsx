@@ -4,12 +4,12 @@ import DeleteTodo from "./DeleteTodo";
 const getData = async () => {
   try {
     console.log("Fetching from:", process.env.NEXT_PUBLIC_API_URL);
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/todo`, {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+    const res = await fetch(`${apiUrl}/api/todo`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }, 
+      },
       cache: "no-store"
     });
     if (!res.ok) {

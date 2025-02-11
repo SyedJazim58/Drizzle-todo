@@ -1,5 +1,5 @@
 "use client"
-import { error } from 'console';
+// import { error } from 'console';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
@@ -27,15 +27,15 @@ const DeleteTodo: React.FC<DeleteTodoProps> = ({ id }) => {
                 console.error("Error deleting Task", errorData.message)
             }
         } catch (error) {
-console.error("error deleting task", error);
+            console.error("error deleting task", error);
         }
     };
 
 
     return (
-        <button 
-        onClick={handleDelete}
-        className='text-red-500 hover:bg-red-700 hover:text-white p-3 py-1 rounded-md items-stretch'>
+        <button
+            onClick={handleDelete}
+            className='text-red-500 hover:bg-red-700 hover:text-white p-3 py-1 rounded-md items-stretch'>
             Delete
         </button>
     );
